@@ -46,9 +46,17 @@ class VorbisConan(ConanFile):
     def _configure_cmake(self):
         if self._cmake:
             return self._cmake
-        self._cmake = CMake(self)
+        self._cmake = CMake(self, set_cmake_flags=True)
+        self._cmake.generator = "Ninja"
+        self._cmake.verbose = True
         self._cmake.configure(build_folder=self._build_subfolder)
         return self._cmake
+
+    def build_requirements(self):
+        if not tools.which("ninja"):
+                self.build_requires("ninja/[>=1.9.0]")
+        if not tools.which("cmake"):
+            self.build_requires("cmake/[>=3.18.2]")
 
     def build(self):
         for patch in self.conan_data.get("patches", {}).get(self.version, []):
