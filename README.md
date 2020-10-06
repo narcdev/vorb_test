@@ -1,6 +1,6 @@
 # Description
 
-Test for CMAKE / Ninja build.
+Use libvorbis package for testing CMAKE / Ninja build.
 
 # Building
 
