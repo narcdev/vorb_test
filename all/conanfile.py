@@ -52,11 +52,9 @@ class VorbisConan(ConanFile):
         self._cmake.configure(build_folder=self._build_subfolder)
         return self._cmake
 
-    def build_requirements(self):
-        if not tools.which("ninja"):
-                self.build_requires("ninja/[>=1.9.0]")
-        if not tools.which("cmake"):
-            self.build_requires("cmake/[>=3.18.2]")
+    def build_requirements(self):        
+        self.build_requires("ninja/[>=1.9.0]")
+        self.build_requires("cmake/[>=3.18.2]")
 
     def build(self):
         for patch in self.conan_data.get("patches", {}).get(self.version, []):
