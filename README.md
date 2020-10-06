@@ -7,6 +7,10 @@ Use libvorbis package for testing CMAKE / Ninja build.
 - conan create . 1.3.7@dev/test
 - conan create . 1.3.7@dev/test --profile VS2017
 
+or python scripts :
+- python build-libvorbis-conan.py --profile default
+- python build-libvorbis-conan.py --profile VS2017
+
 
 # PROFILES
 
